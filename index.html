@@ -48,15 +48,15 @@ const url_string = window.location.href; //window.location.href
         var directionsDisplay = new google.maps.DirectionsRenderer;
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 7,
-          center: {lat: 41.85, lng: -87.65}
+          center: {lat: 50.00, lng: 19.00}
         });
         directionsDisplay.setMap(map);
 
-        var onChangeHandler = function() {
+        // var onChangeHandler = function() {
           calculateAndDisplayRoute(directionsService, directionsDisplay);
-        };
-        document.getElementById('start').addEventListener('change', onChangeHandler);
-        document.getElementById('end').addEventListener('change', onChangeHandler);
+        // };
+        // document.getElementById('start').addEventListener('change', onChangeHandler);
+        // document.getElementById('end').addEventListener('change', onChangeHandler);
       }
 
       function calculateAndDisplayRoute(directionsService, directionsDisplay) {
@@ -66,9 +66,11 @@ const url_string = window.location.href; //window.location.href
           travelMode: 'DRIVING'
         }, function(response, status) {
           if (status === 'OK') {
+            console.log('here')
             directionsDisplay.setDirections(response);
           } else {
             window.alert('Directions request failed due to ' + status);
+            console.log('here:(')
           }
         });
       }
